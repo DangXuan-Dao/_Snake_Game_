@@ -1,8 +1,8 @@
-#include "../.h/Food.h"
+#include "Food.h"
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
 #include <cstdlib>
-#include "../.h/const.h"
+#include "const.h"
 
 Food::Food() : foodTexture(nullptr) {
     spawn();
