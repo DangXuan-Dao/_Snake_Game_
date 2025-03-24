@@ -1,7 +1,7 @@
-#include "../.h/Snake.h"
+#include "Snake.h"
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
-#include "../.h/const.h"
+#include "const.h"
 
 Snake::Snake() : snakeHeadTexture(nullptr), snakeBodyTexture(nullptr), snakeTailTexture(nullptr), snakeCurveTexture(nullptr) {
     body.push_back({GRID_WIDTH / 2, GRID_HEIGHT / 2 + 2});
