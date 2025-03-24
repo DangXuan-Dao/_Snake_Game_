@@ -1,4 +1,4 @@
-#include "../.h/Game.h"
+#include "Game.h"
 #include<iostream>
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
@@ -7,7 +7,7 @@
 #include <cstdlib>
 #include <ctime>
 #include <fstream>
-#include "../.h/const.h"
+#include "const.h"
 
 Game::Game() : running(true), score(0), waitingGameOver(false), currentState(GameState::MENU), highestScoreFile("res/text/HighestScore.txt"), font(nullptr), menuBackgroundTexture(nullptr), playButtonTexture(nullptr), exitButtonTexture(nullptr), gameOverbackgroundTexture(nullptr), pauseTexture(nullptr), playAgainButtonTexture(nullptr), exitGameButtonTexture(nullptr), paused(false), menuMusic(nullptr), eatMusic(nullptr), overMusic(nullptr), playingMusic(nullptr), clickMusic(nullptr), offMusic(nullptr), onMusic(nullptr), mute(false) {
     if (SDL_Init(SDL_INIT_VIDEO) < 0) {
