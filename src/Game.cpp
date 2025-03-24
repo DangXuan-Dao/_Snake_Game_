@@ -38,108 +38,108 @@ Game::Game() : running(true), score(0), waitingGameOver(false), currentState(Gam
     }
     srand(time(0));
 
-    snake.snakeHeadTexture = loadTexture("res/image/snake_head.png");
+    snake.snakeHeadTexture = loadTexture("snake_head.png");
     if (!snake.snakeHeadTexture) {
         running = false;
     }
 
-    snake.snakeBodyTexture = loadTexture("res/image/snake_body.png");
+    snake.snakeBodyTexture = loadTexture("snake_body.png");
     if (!snake.snakeBodyTexture) {
         running = false;
     }
 
-    snake.snakeTailTexture = loadTexture("res/image/snake_tail.png");
+    snake.snakeTailTexture = loadTexture("snake_tail.png");
     if (!snake.snakeTailTexture) {
         running = false;
     }
 
-    snake.snakeCurveTexture = loadTexture("res/image/snake_curve.png");
+    snake.snakeCurveTexture = loadTexture("snake_curve.png");
     if (!snake.snakeCurveTexture) {
         running = false;
     }
 
-    food.foodTexture = loadTexture("res/image/fruit.png");
+    food.foodTexture = loadTexture("fruit.png");
     if (!food.foodTexture) {
         running = false;
     }
 
-    menuBackgroundTexture = loadTexture("res/image/background_menu.png");
+    menuBackgroundTexture = loadTexture("background_menu.png");
     if (!menuBackgroundTexture) {
         running = false;
     }
 
-    pauseTexture = loadTexture("res/image/pause.png");
+    pauseTexture = loadTexture("pause.png");
     if (!pauseTexture) {
         running = false;
     }
 
-    playButtonTexture = loadTexture("res/image/play.png");
+    playButtonTexture = loadTexture("play.png");
     if (!playButtonTexture) {
         running = false;
     }
     playButtonRect = { (SCREEN_WIDTH - 200) / 2, (SCREEN_HEIGHT - 100) / 2, 200, 100 };
 
-    exitButtonTexture = loadTexture("res/image/exit.png");
+    exitButtonTexture = loadTexture("exit.png");
     if (!exitButtonTexture) {
         running = false;
     }
     exitButtonRect = { 10, 10, 90, 40 };
 
-    gameOverbackgroundTexture = loadTexture("res/image/game_over_background.png");
+    gameOverbackgroundTexture = loadTexture("game_over_background.png");
     if (!gameOverbackgroundTexture) {
         running = false;
     }
 
-    playAgainButtonTexture = loadTexture("res/image/play_again.png");
+    playAgainButtonTexture = loadTexture("play_again.png");
     if (!playAgainButtonTexture) {
         running = false;
     }
     playagainRect = { (SCREEN_WIDTH - 200) / 2, (SCREEN_HEIGHT - 100) / 2, 200, 100 };
 
-    exitGameButtonTexture = loadTexture("res/image/exit_game.png");
+    exitGameButtonTexture = loadTexture("exit_game.png");
     if (!exitGameButtonTexture) {
         running = false;
     }
     exitGameButtonRect = { (SCREEN_WIDTH - 200) / 2, (SCREEN_HEIGHT - 100) / 2 + 120, 200, 100 };
 
-    font = TTF_OpenFont("res/text/font-times-new-roman.ttf", 36);
+    font = TTF_OpenFont("font-times-new-roman.ttf", 36);
     if (!font) {
         running = false;
     }
 
-    menuMusic = Mix_LoadMUS("res/sound/menu_music.mp3");
+    menuMusic = Mix_LoadMUS("menu_music.mp3");
     if (!menuMusic) {
         running = false;
     }
 
-    eatMusic = Mix_LoadWAV("res/sound/eating.wav");
+    eatMusic = Mix_LoadWAV("eating.wav");
     if (!eatMusic) {
         running = false;
     }
 
-    overMusic = Mix_LoadWAV("res/sound/gameover.wav");
+    overMusic = Mix_LoadWAV("gameover.wav");
     if (!overMusic) {
         running = false;
     }
 
-    playingMusic = Mix_LoadMUS("res/sound/playing_music.mp3");
+    playingMusic = Mix_LoadMUS("playing_music.mp3");
     if (!playingMusic) {
         running = false;
     }
 
-    offMusic = loadTexture("res/image/off_music.png");
+    offMusic = loadTexture("off_music.png");
     if (!offMusic) {
         running = false;
     }
 
-    onMusic = loadTexture("res/image/on_music.png");
+    onMusic = loadTexture("on_music.png");
     if (!onMusic) {
         running = false;
     }
 
     muteButtonRect = {10, 10, 40, 40};
 
-    clickMusic = Mix_LoadWAV("res/sound/clickmouse.wav");
+    clickMusic = Mix_LoadWAV("clickmouse.wav");
     if (!clickMusic) {
         running = false;
     }
@@ -349,10 +349,10 @@ void Game::handleEvents() {
 
 void Game::resetGame() {
     snake = Snake();
-    snake.snakeHeadTexture = loadTexture("res/image/snake_head.png");
-    snake.snakeBodyTexture = loadTexture("res/image/snake_body.png");
-    snake.snakeTailTexture = loadTexture("res/image/snake_tail.png");
-    snake.snakeCurveTexture = loadTexture("res/image/snake_curve.png");
+    snake.snakeHeadTexture = loadTexture("snake_head.png");
+    snake.snakeBodyTexture = loadTexture("snake_body.png");
+    snake.snakeTailTexture = loadTexture("snake_tail.png");
+    snake.snakeCurveTexture = loadTexture("snake_curve.png");
     food.spawn(snake.body);
     score = 0;
     running = true;
