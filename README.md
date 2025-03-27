@@ -32,3 +32,4 @@
 | RIGHT      |     →    |
 + Mỗi lần ăn được mồi sẽ cộng thêm 10 điểm
 + Nếu di chuyển rắn chạm vào chính nó thì trò chơi sẽ kết thúc
++ Ấn ESC để tạm dừng hoặc tiêp tục trò chơi
