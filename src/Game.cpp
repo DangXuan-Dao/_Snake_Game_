@@ -237,7 +237,7 @@ void Game::run() {
 void Game::handleEvents() {
     SDL_Event event;
     while (SDL_PollEvent(&event)) {
-        if (event.type == SDL_QUIT) {
+        if (event.type == SDL_QUIT) {                        // Thoát cửa sổ
             running = false;
         } else if (event.type == SDL_KEYDOWN && currentState == GameState::PLAYING && !waitingGameOver) {
             switch (event.key.keysym.sym) {
@@ -268,13 +268,13 @@ void Game::handleEvents() {
                 case SDLK_ESCAPE:
                     paused = !paused;
                     break;
-                case SDLK_s:
+                case SDLK_s:                                // Reset điểm cao nhất
                     highestScore = 0;
                     saveHighestScore();
                     break;
             }
         } else if (event.type == SDL_MOUSEBUTTONDOWN) {
-            if (currentState == GameState::MENU) {
+            if (currentState == GameState::MENU) {                    // Đang ở MENU
                 int mouseX, mouseY;
                 SDL_GetMouseState(&mouseX, &mouseY);
 
@@ -308,7 +308,7 @@ void Game::handleEvents() {
                     }
                 }
             }
-            if (currentState == GameState::PLAYING && !waitingGameOver) {
+            else if (currentState == GameState::PLAYING && !waitingGameOver) {                // Đang chơi
                 int mouseX, mouseY;
                 SDL_GetMouseState(&mouseX, &mouseY);
                 if (mouseX >= exitButtonRect.x && mouseX <= exitButtonRect.x + exitButtonRect.w &&
@@ -328,7 +328,7 @@ void Game::handleEvents() {
                     }
                 }
             }
-            if (waitingGameOver) {
+            else if (waitingGameOver) {                            // Kết thúc trò chơi
                 int mouseX, mouseY;
                 SDL_GetMouseState(&mouseX, &mouseY);
                 if (mouseX >= playagainRect.x && mouseX <= playagainRect.x + playagainRect.w &&
@@ -347,7 +347,7 @@ void Game::handleEvents() {
     }
 }
 
-void Game::resetGame() {
+void Game::resetGame() {                                                        // Chơi lại
     snake = Snake();
     snake.snakeHeadTexture = loadTexture("snake_head.png");
     snake.snakeBodyTexture = loadTexture("snake_body.png");
@@ -367,7 +367,7 @@ void Game::update() {
 
     snake.move();
 
-    if (snake.checkCollision()) {
+    if (snake.checkCollision()) {                    // Kiểm tra va chạm
         waitingGameOver = true;
         if (overMusic) {
             Mix_PlayChannel(-1, overMusic, 0);
@@ -375,12 +375,12 @@ void Game::update() {
         return;
     }
 
-    if (snake.body[0].x == food.position.x && snake.body[0].y == food.position.y) {
+    if (snake.body[0].x == food.position.x && snake.body[0].y == food.position.y) {                // Ăn thức ăn
         snake.move(true);
         food.spawn(snake.body);
         score += 10;
 
-        if (score > highestScore) {
+        if (score > highestScore) {                            // Lưu diểm cao nhất
             highestScore = score;
             saveHighestScore();
         }
@@ -391,7 +391,7 @@ void Game::update() {
     }
 }
 
-void Game::loadHighestScore() {
+void Game::loadHighestScore() {                   
     std::ifstream file(highestScoreFile);
     if (file.is_open()) {
         file >> highestScore;
@@ -414,7 +414,7 @@ void Game::updateHighestScore() {
     }
 }
 
-void Game::renderText(const std::string& text, int x, int y, SDL_Color color) {
+void Game::renderText(const std::string& text, int x, int y, SDL_Color color) {                                            
     static std::string lastText;
     static SDL_Texture* textTexture = nullptr;
     static SDL_Color lastColor = {0, 0, 0, 0};
@@ -442,7 +442,7 @@ void Game::renderText(const std::string& text, int x, int y, SDL_Color color) {
     }
 }
 
-void Game::renderBackground() {
+void Game::renderBackground() {                                            // Vẽ background chơi game
     SDL_SetRenderDrawColor(renderer, 173, 216, 200, 255);
     SDL_Rect topRowsRect = {0, 0, SCREEN_WIDTH, 2 * TILE_SIZE};
     SDL_RenderFillRect(renderer, &topRowsRect);
@@ -469,7 +469,7 @@ void Game::renderBackground() {
     }
 }
 
-void Game::renderMenu() {
+void Game::renderMenu() {                                                                // Vẽ MENU
     if (menuBackgroundTexture) {
         SDL_RenderCopy(renderer, menuBackgroundTexture, nullptr, nullptr);
     }
@@ -490,7 +490,7 @@ void Game::renderMenu() {
                           mouseY >= playButtonRect.y && mouseY <= playButtonRect.y + playButtonRect.h);
 
     if (playButtonTexture) {
-        if (isHoveredPlay) {
+        if (isHoveredPlay) {                                                                    // Hiệu ứng mờ
             SDL_SetTextureColorMod(playButtonTexture, 200, 200, 200);
         } else {
             SDL_SetTextureColorMod(playButtonTexture, 255, 255, 255);
@@ -501,7 +501,7 @@ void Game::renderMenu() {
     SDL_RenderPresent(renderer);
 }
 
-void Game::renderScore() {
+void Game::renderScore() {                                                            // Hiển thị điểm
     std::string scoreText = "Score: " + std::to_string(score);
     SDL_Color textColor = {255, 0, 0, 255};
     renderText(scoreText, SCREEN_WIDTH / 2, 10, textColor);
@@ -512,7 +512,7 @@ void Game::renderScore() {
     renderText(highestScoreText, SCREEN_WIDTH - textWidth - 10, 10, textColor);
 }
 
-void Game::renderGameOver() {
+void Game::renderGameOver() {                                                                // Vẽ màn hình game over
     if (gameOverbackgroundTexture) {
         SDL_RenderCopy(renderer, gameOverbackgroundTexture, nullptr, nullptr);
     }
