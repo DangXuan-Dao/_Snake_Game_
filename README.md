@@ -38,3 +38,6 @@
 + Hình ảnh : https://github.com/trongminh03/Snake-Game
 + Âm thanh, hiệu ứng : Tra trên google 
 + Thuật toán : Tham khảo AI
+## Cách cài đặt
++ Truy cập đường dẫn: https://drive.google.com/drive/folders/1D-6sQUT-MSVtQNFDtF3e2SjO6Hfz3T-9?usp=drive_link và tải file SnakeGame về máy
++ Giải nén file vừa tải rồi ấn vào file vừa giải nén và chọn file main.exe để chơi game
