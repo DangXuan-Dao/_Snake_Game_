@@ -32,7 +32,6 @@
 | RIGHT      |     →    |
 + Mỗi lần ăn được mồi sẽ cộng thêm 10 điểm
 + Nếu di chuyển rắn chạm vào chính nó thì trò chơi sẽ kết thúc
-+ Ấn ESC để tạm dừng hoặc tiêp tục trò chơi
 ## Nguồn tham khảo
 + Cách cài đặt thư viện SDL trên Visual Studio Code : https://www.youtube.com/watch?v=cnykbzuGo8I
 + Hình ảnh : https://github.com/trongminh03/Snake-Game
