@@ -8,7 +8,7 @@ Food::Food() : foodTexture(nullptr) {
     spawn();
 }
 
-void Food::spawn(const std::vector<Position>& snakeBody) {
+void Food::spawn(const std::vector<Position>& snakeBody) {                                // Tạo thức ăn ở vị trí ngẫu nhiên trong vùng chơi
     bool validPosition = false;
     while (!validPosition) {
         position.x = rand() % GRID_WIDTH;
@@ -23,7 +23,7 @@ void Food::spawn(const std::vector<Position>& snakeBody) {
     }
 }
 
-void Food::render(SDL_Renderer* renderer) {
+void Food::render(SDL_Renderer* renderer) {                                                // Vẽ ảnh thức ăn
     if (foodTexture) {
         SDL_Rect rect = {position.x * TILE_SIZE, position.y * TILE_SIZE, TILE_SIZE, TILE_SIZE};
         SDL_RenderCopy(renderer, foodTexture, nullptr, &rect);
