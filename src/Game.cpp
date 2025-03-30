@@ -389,6 +389,9 @@ void Game::update() {
             Mix_PlayChannel(-1, eatMusic, 0);
         }
     }
+    if (score % 50 == 0 && moveDelay > 30) { // Giới hạn tốc độ tối thiểu
+        moveDelay -= 10; // Giảm 10ms mỗi lần
+    }
 }
 
 void Game::loadHighestScore() {                   
