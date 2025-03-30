@@ -20,6 +20,7 @@ class Game {
 public:
     SDL_Window* window;
     SDL_Renderer* renderer;
+    int moveDelay = 100;
     bool running;
     Snake snake;
     Food food;
